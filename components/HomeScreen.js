@@ -17,31 +17,31 @@ const HomeScreen = () => {
           <Text>Today you have 4 tasks </Text>
         </View>
         <Image
-          source={require("../assets/person.png")}
+          source={require("../assets/person-outline.png")}
           style={{ height: 80, width: 80, resizeMode: "contain" }}
         />
       </View>
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
-        <View className="bg-white w-64 h-24 shadow-md rounded-lg mt-4">
-          <Text>Today</Text>
-          <Text>4 Tasks</Text>
-        </View>
-        <View className="bg-white w-64 h-24 shadow-md rounded-lg mt-4">
-          <Text>Today</Text>
-          <Text>4 Tasks</Text>
-        </View>
-        <View className="bg-white w-64 h-24 shadow-md rounded-lg mt-4">
-          <Text>Today</Text>
-          <Text>4 Tasks</Text>
-        </View>
-        <View className="bg-white w-64 h-24 shadow-md rounded-md mt-4">
-          <Text>Today</Text>
-          <Text>4 Tasks</Text>
-        </View>
-        <View className="bg-white w-64 h-24 shadow-md rounded-lg mt-4">
-          <Text>Today</Text>
-          <Text>4 Tasks</Text>
-        </View>
+        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
+          <Text className="font-bold text-xl">Today</Text>
+          <Text className="text-color-gray">4 Tasks</Text>
+        </TouchableOpacity>
+        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
+          <Text className="font-bold text-xl">Planned</Text>
+          <Text className="text-color-gray">4 Tasks</Text>
+        </TouchableOpacity>
+        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
+          <Text className="font-bold text-xl">Personal</Text>
+          <Text className="text-color-gray">4 Tasks</Text>
+        </TouchableOpacity>
+        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
+          <Text className="font-bold text-xl">Work</Text>
+          <Text className="text-color-gray">4 Tasks</Text>
+        </TouchableOpacity>
+        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
+          <Text className="font-bold text-xl">Shopping</Text>
+          <Text className="text-color-gray">4 Tasks</Text>
+        </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>
   );
