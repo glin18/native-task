@@ -6,6 +6,7 @@ import {
 } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import Todo from "../components/Todo";
+import { Icon } from "@rneui/themed";
 
 const DATA = [
   {
@@ -34,7 +35,7 @@ const TaskScreen = ({ route }) => {
   const navigator = useNavigation();
   const { category, numTasks } = route.params;
   return (
-    <SafeAreaView>
+    <SafeAreaView className="h-full">
       <View className="flex-row justify-between px-6">
         <ArrowLongLeftIcon
           size={45}
@@ -49,9 +50,10 @@ const TaskScreen = ({ route }) => {
         <Text className="text-gray-600 text-lg">{numTasks} Tasks</Text>
         <Text className="font-bold text-3xl">{category}</Text>
       </View>
-      <View className="h-full">
+      <View className="flex-1">
         <FlatList
           data={DATA}
+          showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <Todo
               todo={item.todo}
@@ -61,6 +63,7 @@ const TaskScreen = ({ route }) => {
           )}
         />
       </View>
+      <Icon name="add-circle-outline" type="ionicon" size={60} />
     </SafeAreaView>
   );
 };
