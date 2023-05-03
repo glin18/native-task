@@ -7,8 +7,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const HomeScreen = () => {
+  const navigator = useNavigation();
+
   return (
     <SafeAreaView>
       <View className="flex-row justify-around mt-5 items-center px-2">
@@ -22,7 +25,12 @@ const HomeScreen = () => {
         />
       </View>
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
-        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
+        <TouchableOpacity
+          className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center"
+          onPress={() => {
+            navigator.navigate("Task");
+          }}
+        >
           <Text className="font-bold text-xl">Today</Text>
           <Text className="text-color-gray">4 Tasks</Text>
         </TouchableOpacity>

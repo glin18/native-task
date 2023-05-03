@@ -4,12 +4,21 @@ import {
   ArrowLongLeftIcon,
   EllipsisVerticalIcon,
 } from "react-native-heroicons/outline";
+import { useNavigation } from "@react-navigation/native";
 
 const TaskScreen = () => {
+  const navigator = useNavigation();
+
   return (
     <SafeAreaView>
       <View className="flex-row justify-between p-6">
-        <ArrowLongLeftIcon size={45} color="black" />
+        <ArrowLongLeftIcon
+          size={45}
+          color="black"
+          onPress={() => {
+            navigator.navigate("Home");
+          }}
+        />
         <EllipsisVerticalIcon color="black" size={45} />
       </View>
       <View className="items-center">
