@@ -49,9 +49,18 @@ const TaskScreen = ({ route }) => {
         <Text className="text-gray-600 text-lg">{numTasks} Tasks</Text>
         <Text className="font-bold text-3xl">{category}</Text>
       </View>
-      <ScrollView>
-        <Todo todo={"Study React Native"} isCompleted={false} />
-      </ScrollView>
+      <View className="h-full">
+        <FlatList
+          data={DATA}
+          renderItem={({ item }) => (
+            <Todo
+              todo={item.todo}
+              isCompleted={item.isCompleted}
+              keyExtractor={(item) => item.id}
+            />
+          )}
+        />
+      </View>
     </SafeAreaView>
   );
 };
