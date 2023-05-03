@@ -1,4 +1,11 @@
-import { SafeAreaView, FlatList, View, Text, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  FlatList,
+  View,
+  Text,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import React from "react";
 import {
   ArrowLongLeftIcon,
@@ -37,13 +44,14 @@ const TaskScreen = ({ route }) => {
   return (
     <SafeAreaView className="h-full">
       <View className="flex-row justify-between px-6">
-        <ArrowLongLeftIcon
-          size={45}
-          color="black"
+        <TouchableOpacity
           onPress={() => {
             navigator.navigate("Home");
           }}
-        />
+        >
+          <ArrowLongLeftIcon size={45} color="black" />
+        </TouchableOpacity>
+
         <EllipsisVerticalIcon color="black" size={45} />
       </View>
       <View className="items-center">
@@ -63,7 +71,9 @@ const TaskScreen = ({ route }) => {
           )}
         />
       </View>
-      <Icon name="add-circle-outline" type="ionicon" size={60} />
+      <TouchableOpacity>
+        <Icon name="add-circle-outline" type="ionicon" size={60} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
