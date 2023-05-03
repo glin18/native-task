@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
+import TaskCard from "../components/TaskCard";
 
 const HomeScreen = () => {
   const navigator = useNavigation();
@@ -25,31 +26,11 @@ const HomeScreen = () => {
         />
       </View>
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
-        <TouchableOpacity
-          className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center"
-          onPress={() => {
-            navigator.navigate("Task");
-          }}
-        >
-          <Text className="font-bold text-xl">Today</Text>
-          <Text className="text-color-gray">4 Tasks</Text>
-        </TouchableOpacity>
-        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
-          <Text className="font-bold text-xl">Planned</Text>
-          <Text className="text-color-gray">4 Tasks</Text>
-        </TouchableOpacity>
-        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
-          <Text className="font-bold text-xl">Personal</Text>
-          <Text className="text-color-gray">4 Tasks</Text>
-        </TouchableOpacity>
-        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
-          <Text className="font-bold text-xl">Work</Text>
-          <Text className="text-color-gray">4 Tasks</Text>
-        </TouchableOpacity>
-        <TouchableOpacity className="bg-white w-72 h-24 shadow-md rounded-lg mt-4 flex-col justify-center items-center">
-          <Text className="font-bold text-xl">Shopping</Text>
-          <Text className="text-color-gray">4 Tasks</Text>
-        </TouchableOpacity>
+        <TaskCard category="Today" numTasks="4" />
+        <TaskCard category="Planned" numTasks="4" />
+        <TaskCard category="Personal" numTasks="4" />
+        <TaskCard category="Work" numTasks="4" />
+        <TaskCard category="Shopping" numTasks="4" />
       </ScrollView>
     </SafeAreaView>
   );
