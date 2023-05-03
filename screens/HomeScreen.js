@@ -9,13 +9,17 @@ import {
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import TaskCard from "../components/TaskCard";
+import { Bars3BottomLeftIcon } from "react-native-heroicons/outline";
 
 const HomeScreen = () => {
   const navigator = useNavigation();
 
   return (
     <SafeAreaView>
-      <View className="flex-row justify-around mt-5 items-center px-2">
+      <View className="px-6">
+        <Bars3BottomLeftIcon color="black" size={35} />
+      </View>
+      <View className="flex-row justify-around mt-2 items-center px-2">
         <View className="p-6">
           <Text className="text-4xl font-bold">Hello Gary</Text>
           <Text>Today you have 4 tasks </Text>
