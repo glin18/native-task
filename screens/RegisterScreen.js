@@ -10,8 +10,11 @@ import React from "react";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigation } from "@react-navigation/native";
 
 const RegisterScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView className="flex-1">
       <KeyboardAvoidingView
@@ -39,11 +42,11 @@ const RegisterScreen = () => {
           <ArrowRightIcon color="white" size={20} />
         </TouchableOpacity>
       </KeyboardAvoidingView>
-      <View className="flex-row justify-center">
+      <View className="flex-row justify-center pb-3">
         <Text className="align-center font-bold text-lg text-gray-500">
           Already have an account?
         </Text>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text className=" font-bold text-lg text-gray-700"> Sign In</Text>
         </TouchableOpacity>
       </View>
