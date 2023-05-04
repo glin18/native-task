@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -14,6 +14,8 @@ import { useNavigation } from "@react-navigation/native";
 
 const RegisterScreen = () => {
   const navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <SafeAreaView className="flex-1">
@@ -31,11 +33,16 @@ const RegisterScreen = () => {
         <TextInput
           placeholder="Email"
           className="border-2 border-gray-400 rounded-lg p-2"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
         />
 
         <TextInput
           placeholder="Password"
           className="border-2 border-gray-400 rounded-lg p-2"
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry
         />
         <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center self-end">
           <Text className="text-white font-bold">REGISTER</Text>
