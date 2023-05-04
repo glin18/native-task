@@ -9,7 +9,7 @@ import React from "react";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
   return (
     <SafeAreaView className="flex-1">
       <KeyboardAvoidingView
@@ -17,9 +17,9 @@ const LoginScreen = () => {
         className="flex-1 justify-center px-10 space-y-4"
       >
         <View>
-          <Text className="text-4xl font-bold">Login</Text>
+          <Text className="text-4xl font-bold">Register</Text>
           <Text className="text-gray-500 font-bold text-lg">
-            Please sign in to continue
+            Please Register to continue
           </Text>
         </View>
 
@@ -37,4 +37,4 @@ const LoginScreen = () => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;

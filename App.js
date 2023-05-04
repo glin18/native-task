@@ -6,6 +6,7 @@ import HomeScreen from "./screens/HomeScreen";
 import TaskScreen from "./screens/TaskScreen";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,11 +31,18 @@ export default function App() {
               />
             </>
           ) : (
-            <Stack.Screen
-              name="Login"
-              component={LoginScreen}
-              options={{ headerShown: false }}
-            />
+            <>
+              <Stack.Screen
+                name="Register"
+                component={RegisterScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Login"
+                component={LoginScreen}
+                options={{ headerShown: false }}
+              />
+            </>
           )}
         </Stack.Navigator>
         <StatusBar style="auto" />
