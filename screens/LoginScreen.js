@@ -4,12 +4,16 @@ import {
   View,
   Text,
   TextInput,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView className="flex-1">
       <KeyboardAvoidingView
@@ -33,6 +37,14 @@ const LoginScreen = () => {
           className="border-2 border-gray-400 rounded-lg p-2"
         />
       </KeyboardAvoidingView>
+      <View className="flex-row justify-center pb-3">
+        <Text className="align-center font-bold text-lg text-gray-500">
+          Don't have an account?
+        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+          <Text className=" font-bold text-lg text-gray-700"> Register</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
