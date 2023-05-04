@@ -61,7 +61,7 @@ const RegisterScreen = () => {
           autoCapitalize="none"
         />
         <TouchableOpacity
-          onPress={() => handleRegister()}
+          onPress={handleRegister}
           className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center self-end"
         >
           <Text className="text-white font-bold">REGISTER</Text>

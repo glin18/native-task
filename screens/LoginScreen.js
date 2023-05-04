@@ -10,12 +10,26 @@ import React, { useState } from "react";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../firebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleLogin = async () => {
+    try {
+      const userCredentials = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredentials.user;
+      console.log(user.email);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1">
@@ -46,7 +60,10 @@ const LoginScreen = () => {
           secureTextEntry
           autoCapitalize="none"
         />
-        <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center self-end">
+        <TouchableOpacity
+          onPress={handleLogin}
+          className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center self-end"
+        >
           <Text className="text-white font-bold">LOGIN</Text>
           <ArrowRightIcon color="white" size={20} />
         </TouchableOpacity>
