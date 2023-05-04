@@ -6,7 +6,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import { ArrowRightIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -45,6 +46,10 @@ const LoginScreen = () => {
           secureTextEntry
           autoCapitalize="none"
         />
+        <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center self-end">
+          <Text className="text-white font-bold">LOGIN</Text>
+          <ArrowRightIcon color="white" size={20} />
+        </TouchableOpacity>
       </KeyboardAvoidingView>
       <View className="flex-row justify-center pb-3">
         <Text className="align-center font-bold text-lg text-gray-500">
