@@ -4,6 +4,7 @@ import {
   View,
   Text,
   TextInput,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import { auth } from "../firebaseConfig";
@@ -32,6 +33,9 @@ const RegisterScreen = () => {
           placeholder="Password"
           className="border-2 border-gray-400 rounded-lg p-2"
         />
+        <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-24 flex justify-center items-center self-end">
+          <Text className="text-white font-bold">Register</Text>
+        </TouchableOpacity>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
