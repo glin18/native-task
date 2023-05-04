@@ -1,9 +1,10 @@
 import React, { createContext, useState, useContext } from "react";
+import { auth } from "../firebaseConfig";
 
 const AuthContext = createContext(null);
 
-export function AuthProvider({ user, children }) {
-  const [currentUser, setCurrentUser] = useState(user);
+export function AuthProvider({ children }) {
+  const [currentUser, setCurrentUser] = useState(auth?.currentUser?.email);
 
   return (
     <AuthContext.Provider value={{ currentUser, setCurrentUser }}>

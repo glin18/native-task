@@ -5,16 +5,17 @@ import TaskScreen from "../screens/TaskScreen";
 import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import { auth } from "../firebaseConfig";
+import { useAuth } from "../hooks/useAuth";
 
 const Stack = createNativeStackNavigator();
 
 export default function StackNavigator() {
-  //   const user = auth?.currentUser?.email;
-  const user = "";
+  const { currentUser } = useAuth();
+
   return (
     <>
       <Stack.Navigator>
-        {user ? (
+        {currentUser ? (
           <>
             <Stack.Screen
               name="Home"

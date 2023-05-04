@@ -6,16 +6,19 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowRightIcon } from "react-native-heroicons/outline";
 import { useNavigation } from "@react-navigation/native";
 import { auth } from "../firebaseConfig";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "../hooks/useAuth";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setCurrentUser } = useAuth();
 
   const handleLogin = async () => {
     try {
@@ -26,6 +29,7 @@ const LoginScreen = () => {
       );
       const user = userCredentials.user;
       console.log(user.email);
+      setCurrentUser(auth?.currentUser?.email);
     } catch (err) {
       console.error(err);
     }
