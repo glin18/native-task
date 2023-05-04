@@ -16,9 +16,9 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView>
-      <View className="px-6">
+      <TouchableOpacity className="px-6">
         <Bars3BottomLeftIcon color="black" size={35} />
-      </View>
+      </TouchableOpacity>
       <View className="flex-row justify-around mt-2 items-center px-2">
         <View className="p-6">
           <Text className="text-4xl font-bold">Hello Gary</Text>
