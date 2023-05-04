@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
+import { ArrowRightIcon } from "react-native-heroicons/outline";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -33,8 +34,9 @@ const RegisterScreen = () => {
           placeholder="Password"
           className="border-2 border-gray-400 rounded-lg p-2"
         />
-        <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-24 flex justify-center items-center self-end">
-          <Text className="text-white font-bold">Register</Text>
+        <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center self-end">
+          <Text className="text-white font-bold">REGISTER</Text>
+          <ArrowRightIcon color="white" size={20} />
         </TouchableOpacity>
       </KeyboardAvoidingView>
     </SafeAreaView>
