@@ -39,6 +39,14 @@ const RegisterScreen = () => {
           <ArrowRightIcon color="white" size={20} />
         </TouchableOpacity>
       </KeyboardAvoidingView>
+      <View className="flex-row justify-center">
+        <Text className="align-center font-bold text-lg text-gray-500">
+          Already have an account?
+        </Text>
+        <TouchableOpacity>
+          <Text className=" font-bold text-lg text-gray-700"> Sign In</Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
