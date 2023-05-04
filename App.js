@@ -5,25 +5,37 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import TaskScreen from "./screens/TaskScreen";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import LoginScreen from "./screens/LoginScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const user = "";
   return (
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Task"
-            component={TaskScreen}
-            options={{ headerShown: false }}
-            initialParams={{ category: "Error", numTasks: "0" }}
-          />
+          {user ? (
+            <>
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="Task"
+                component={TaskScreen}
+                options={{ headerShown: false }}
+                initialParams={{ category: "Error", numTasks: "0" }}
+              />
+            </>
+          ) : (
+            <Stack.Screen
+              name="Login"
+              component={LoginScreen}
+              options={{ headerShown: false }}
+            />
+          )}
         </Stack.Navigator>
         <StatusBar style="auto" />
       </NavigationContainer>
