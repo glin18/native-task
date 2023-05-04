@@ -13,6 +13,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const LoginScreen = () => {
   const navigation = useNavigation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <SafeAreaView className="flex-1">
@@ -30,11 +32,18 @@ const LoginScreen = () => {
         <TextInput
           placeholder="Email"
           className="border-2 border-gray-400 rounded-lg p-2"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+          autoCapitalize="none"
         />
 
         <TextInput
           placeholder="Password"
           className="border-2 border-gray-400 rounded-lg p-2"
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+          secureTextEntry
+          autoCapitalize="none"
         />
       </KeyboardAvoidingView>
       <View className="flex-row justify-center pb-3">

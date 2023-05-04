@@ -35,6 +35,7 @@ const RegisterScreen = () => {
           className="border-2 border-gray-400 rounded-lg p-2"
           value={email}
           onChangeText={(text) => setEmail(text)}
+          autoCapitalize="none"
         />
 
         <TextInput
@@ -43,6 +44,7 @@ const RegisterScreen = () => {
           value={password}
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
+          autoCapitalize="none"
         />
         <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center self-end">
           <Text className="text-white font-bold">REGISTER</Text>
