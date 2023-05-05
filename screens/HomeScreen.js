@@ -16,7 +16,7 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView>
-      <TouchableOpacity className="px-6">
+      <TouchableOpacity className="px-6" onPress={() => navigator.openDrawer()}>
         <Bars3BottomLeftIcon color="black" size={35} />
       </TouchableOpacity>
       <View className="flex-row justify-around mt-2 items-center px-2">
