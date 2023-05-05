@@ -6,6 +6,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import { auth } from "../firebaseConfig";
 import { useAuth } from "../hooks/useAuth";
+import AppScreen from "../screens/AppScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +18,7 @@ export default function StackNavigator() {
       <Stack.Navigator>
         {currentUser ? (
           <>
-            <Stack.Screen
+            {/* <Stack.Screen
               name="Home"
               component={HomeScreen}
               options={{ headerShown: false }}
@@ -27,6 +28,11 @@ export default function StackNavigator() {
               component={TaskScreen}
               options={{ headerShown: false }}
               initialParams={{ category: "Error", numTasks: "0" }}
+            /> */}
+            <Stack.Screen
+              name="App"
+              component={AppScreen}
+              options={{ headerShown: false }}
             />
           </>
         ) : (
