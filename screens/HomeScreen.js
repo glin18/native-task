@@ -52,7 +52,7 @@ const HomeScreen = () => {
           <TaskCard
             key={category.id}
             category={category.data.name}
-            numTasks={category.data.tasks.length}
+            tasks={category.data.tasks}
           />
         ))}
       </ScrollView>
