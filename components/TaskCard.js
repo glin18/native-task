@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const TaskCard = ({ category, numTasks }) => {
+const TaskCard = ({ key, category, numTasks }) => {
   const navigator = useNavigation();
 
   return (
@@ -11,6 +11,7 @@ const TaskCard = ({ category, numTasks }) => {
       onPress={() => {
         navigator.navigate("Task", { category, numTasks });
       }}
+      key={key}
     >
       <Text className="font-bold text-xl">{category}</Text>
       <Text className="text-color-gray">{numTasks} Tasks</Text>

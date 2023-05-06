@@ -6,13 +6,31 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import TaskCard from "../components/TaskCard";
 import { Bars3BottomLeftIcon } from "react-native-heroicons/outline";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
+import { db, auth } from "../firebaseConfig";
 
 const HomeScreen = () => {
   const navigator = useNavigation();
+
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    const q = query(
+      collection(db, "category"),
+      where("email", "==", auth?.currentUser?.email)
+    );
+    onSnapshot(q, (querySnapshot) => {
+      setCategories(
+        querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          data: doc.data(),
+        }))
+      );
+    });
+  }, []);
 
   return (
     <SafeAreaView>
@@ -30,11 +48,13 @@ const HomeScreen = () => {
         />
       </View>
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
-        <TaskCard category="Today" numTasks="4" />
-        <TaskCard category="Planned" numTasks="4" />
-        <TaskCard category="Personal" numTasks="4" />
-        <TaskCard category="Work" numTasks="4" />
-        <TaskCard category="Shopping" numTasks="4" />
+        {categories.map((category) => (
+          <TaskCard
+            key={category.id}
+            category={category.data.name}
+            numTasks={category.data.tasks.length}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
