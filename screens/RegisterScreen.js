@@ -11,6 +11,8 @@ import { ArrowRightIcon } from "react-native-heroicons/outline";
 import { auth } from "../firebaseConfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
+import { db } from "../firebaseConfig";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 
 const RegisterScreen = () => {
   const navigation = useNavigation();
@@ -18,6 +20,14 @@ const RegisterScreen = () => {
   const [password, setPassword] = useState("");
 
   const handleRegister = async () => {
+    const createCategory = async (name, email) => {
+      await addDoc(collection(db, "category"), {
+        email: email,
+        name: name,
+        tasks: [],
+      });
+    };
+
     try {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
@@ -25,8 +35,10 @@ const RegisterScreen = () => {
         password
       );
       const user = userCredentials.user;
-      console.log(user.email);
-      navigation.navigate("Login");
+      const categories = ["Today", "Planned", "Personal", "Work", "Shopping"];
+      categories.forEach((category) => {
+        createCategory(category, user.email);
+      });
     } catch (err) {
       console.error(err);
     }
