@@ -50,7 +50,7 @@ const HomeScreen = () => {
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
         {categories.map((category) => (
           <TaskCard
-            key={category.id}
+            id={category.id}
             category={category.data.name}
             tasks={category.data.tasks}
           />

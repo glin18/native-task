@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
-  KeyboardAvoidingView,
 } from "react-native";
 import React, { useState } from "react";
 import {
@@ -56,27 +55,26 @@ const TaskScreen = ({ route }) => {
         />
       </View>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <SafeAreaView
-          behavior="padding"
-          className="bg-slate-400 relative flex-1 mt-72"
-        >
-          <View className="mt-10">
-            <View className="flex-row justify-center align-center">
+        <SafeAreaView behavior="padding" className="bg-slate-400 flex-1 mt-72">
+          <View className="mt-3 flex-row justify-end">
+            {/* <View className="flex-row justify-center align-center">
               <Text className="text-3xl">Add Task</Text>
-            </View>
-            <TouchableOpacity className="absolute right-10">
-              <XCircleIcon
-                color="black"
-                size={40}
-                onPress={() => setModalVisible(false)}
-              />
+            </View> */}
+            <TouchableOpacity
+              className="right-3"
+              onPress={() => setModalVisible(false)}
+            >
+              <XCircleIcon color="black" size={40} />
             </TouchableOpacity>
           </View>
-          <View className="flex-col flex-1 items-center justify-start pt-10 space-y-5">
+          <View className="flex-column flex-1 items-center justify-start pt-2 space-y-5">
             <TextInput
               placeholder="Task"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg block w-60 p-2"
             />
+            <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center">
+              <Text>Add Task</Text>
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
       </Modal>
