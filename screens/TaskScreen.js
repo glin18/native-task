@@ -18,6 +18,8 @@ import { useNavigation } from "@react-navigation/native";
 import Todo from "../components/Todo";
 import { Icon } from "@rneui/themed";
 import { set } from "react-native-reanimated";
+import { db } from "../firebaseConfig";
+import { collection, doc, updateDoc } from "firebase/firestore";
 
 const TaskScreen = ({ route }) => {
   const navigator = useNavigation();
