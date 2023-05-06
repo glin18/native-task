@@ -23,6 +23,12 @@ const TaskScreen = ({ route }) => {
   const navigator = useNavigation();
   const { category, tasks } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
+  const [newTask, setNewTask] = useState("");
+
+  const handleNewTask = () => {
+    setNewTask("");
+    console.log(newTask);
+  };
 
   return (
     <SafeAreaView className="h-full">
@@ -70,9 +76,14 @@ const TaskScreen = ({ route }) => {
           <View className="flex-column flex-1 items-center justify-start pt-2 space-y-5">
             <TextInput
               placeholder="Task"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg block w-60 p-2"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg block w-64 p-2"
+              value={newTask}
+              onChangeText={(text) => setNewTask(text)}
             />
-            <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center">
+            <TouchableOpacity
+              onPress={handleNewTask}
+              className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center"
+            >
               <Text className="font-bold">Add Task</Text>
             </TouchableOpacity>
           </View>
