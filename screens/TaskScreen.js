@@ -6,6 +6,8 @@ import {
   ScrollView,
   TouchableOpacity,
   Modal,
+  TextInput,
+  KeyboardAvoidingView,
 } from "react-native";
 import React, { useState } from "react";
 import {
@@ -54,7 +56,10 @@ const TaskScreen = ({ route }) => {
         />
       </View>
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
-        <SafeAreaView className="bg-slate-400 relative flex-1 mt-44">
+        <SafeAreaView
+          behavior="padding"
+          className="bg-slate-400 relative flex-1 mt-72"
+        >
           <View className="mt-10">
             <View className="flex-row justify-center align-center">
               <Text className="text-3xl">Add Task</Text>
@@ -66,6 +71,12 @@ const TaskScreen = ({ route }) => {
                 onPress={() => setModalVisible(false)}
               />
             </TouchableOpacity>
+          </View>
+          <View className="flex-col flex-1 items-center justify-start pt-10 space-y-5">
+            <TextInput
+              placeholder="Task"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg block w-60 p-2"
+            />
           </View>
         </SafeAreaView>
       </Modal>
