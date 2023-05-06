@@ -63,9 +63,6 @@ const TaskScreen = ({ route }) => {
       <Modal animationType="slide" transparent={true} visible={modalVisible}>
         <SafeAreaView behavior="padding" className="bg-slate-400 flex-1 mt-72">
           <View className="mt-3 flex-row justify-end">
-            {/* <View className="flex-row justify-center align-center">
-              <Text className="text-3xl">Add Task</Text>
-            </View> */}
             <TouchableOpacity
               className="right-3"
               onPress={() => setModalVisible(false)}
