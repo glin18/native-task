@@ -73,7 +73,7 @@ const TaskScreen = ({ route }) => {
               className="bg-gray-50 border border-gray-300 text-gray-900 text-xl rounded-lg block w-60 p-2"
             />
             <TouchableOpacity className="p-4 bg-gray-500 rounded-xl w-36 flex-row space-x-2 justify-center items-center">
-              <Text>Add Task</Text>
+              <Text className="font-bold">Add Task</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>
