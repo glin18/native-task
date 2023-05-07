@@ -34,11 +34,14 @@ const TaskScreen = ({ route }) => {
     try {
       await updateDoc(taskDocRef, {
         ...data,
-        tasks: data.tasks.push({
-          todo: newTask,
-          isCompleted: false,
-          id: Date.now(),
-        }),
+        tasks: [
+          ...data.tasks,
+          {
+            todo: newTask,
+            isCompleted: false,
+            id: Date.now(),
+          },
+        ],
       });
     } catch (err) {
       console.error(err);
