@@ -22,7 +22,7 @@ const HomeScreen = () => {
       collection(db, "category"),
       where("email", "==", auth?.currentUser?.email)
     );
-    onSnapshot(q, (querySnapshot) => {
+    const unSub = onSnapshot(q, (querySnapshot) => {
       setCategories(
         querySnapshot.docs.map((doc) => ({
           id: doc.id,
