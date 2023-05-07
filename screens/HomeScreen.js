@@ -49,11 +49,7 @@ const HomeScreen = () => {
       </View>
       <ScrollView contentContainerStyle={{ alignItems: "center" }}>
         {categories.map((category) => (
-          <TaskCard
-            id={category.id}
-            category={category.data.name}
-            tasks={category.data.tasks}
-          />
+          <TaskCard key={category.id} category={category} />
         ))}
       </ScrollView>
     </SafeAreaView>

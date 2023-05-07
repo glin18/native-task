@@ -23,12 +23,18 @@ import { collection, doc, updateDoc } from "firebase/firestore";
 
 const TaskScreen = ({ route }) => {
   const navigator = useNavigation();
-  const { category, tasks } = route.params;
+  const { id, data } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
   const [newTask, setNewTask] = useState("");
 
-  const handleNewTask = () => {
+  const handleNewTask = async () => {
     setNewTask("");
+    const taskDocRef = doc(db, "category", id);
+    try {
+      await updateDoc(taskDocRef, {});
+    } catch (err) {
+      console.error(err);
+    }
     console.log(newTask);
   };
 
@@ -46,12 +52,12 @@ const TaskScreen = ({ route }) => {
         <EllipsisVerticalIcon color="black" size={45} />
       </View>
       <View className="items-center">
-        <Text className="text-gray-600 text-lg">{tasks.length} Tasks</Text>
-        <Text className="font-bold text-3xl">{category}</Text>
+        <Text className="text-gray-600 text-lg">{data.tasks.length} Tasks</Text>
+        <Text className="font-bold text-3xl">{data.name}</Text>
       </View>
       <View className="flex-1">
         <FlatList
-          data={tasks}
+          data={data.tasks}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
             <Todo
