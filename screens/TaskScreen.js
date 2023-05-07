@@ -85,11 +85,7 @@ const TaskScreen = ({ route }) => {
           data={taskData.tasks}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
-            <Todo
-              todo={item.todo}
-              isCompleted={item.isCompleted}
-              keyExtractor={(item) => item.id}
-            />
+            <Todo item={item} keyExtractor={(item) => item.id} />
           )}
         />
       </View>
