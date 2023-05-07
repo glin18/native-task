@@ -56,7 +56,9 @@ const Todo = ({ item, categoryId, taskData, setTaskData }) => {
         containerStyle={{ backgroundColor: "rgba(52, 52, 52, alpha)" }}
       />
 
-      <Text className="text-lg">{item.todo}</Text>
+      <Text className={"text-lg " + (item.isCompleted ? "line-through" : "")}>
+        {item.todo}
+      </Text>
       <TouchableOpacity className="ml-auto pr-10" onPress={handleDelete}>
         <TrashIcon color="black" />
       </TouchableOpacity>
