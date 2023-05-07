@@ -29,9 +29,17 @@ const TaskScreen = ({ route }) => {
 
   const handleNewTask = async () => {
     setNewTask("");
+    setModalVisible(false);
     const taskDocRef = doc(db, "category", id);
     try {
-      await updateDoc(taskDocRef, {});
+      await updateDoc(taskDocRef, {
+        ...data,
+        tasks: data.tasks.push({
+          todo: newTask,
+          isCompleted: false,
+          id: Date.now(),
+        }),
+      });
     } catch (err) {
       console.error(err);
     }
