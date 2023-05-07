@@ -28,8 +28,7 @@ const Todo = ({ item, categoryId, taskData, setTaskData }) => {
           if (task.id != item.id) {
             return task;
           } else {
-            task.isCompleted = !task.isCompleted;
-            return task;
+            return { ...task, isCompleted: !task.isCompleted };
           }
         }),
       });
@@ -39,7 +38,7 @@ const Todo = ({ item, categoryId, taskData, setTaskData }) => {
           if (task.id != item.id) {
             return task;
           } else {
-            task.isCompleted = !task.isCompleted;
+            return { ...task, isCompleted: !task.isCompleted };
           }
         }),
       });
@@ -56,6 +55,7 @@ const Todo = ({ item, categoryId, taskData, setTaskData }) => {
         onPress={onCheck}
         containerStyle={{ backgroundColor: "rgba(52, 52, 52, alpha)" }}
       />
+
       <Text className="text-lg">{item.todo}</Text>
       <TouchableOpacity className="ml-auto pr-10" onPress={handleDelete}>
         <TrashIcon color="black" />
