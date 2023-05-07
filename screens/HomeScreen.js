@@ -32,6 +32,11 @@ const HomeScreen = () => {
     });
   }, []);
 
+  const totalTasks = categories.reduce(
+    (accumulator, category) => accumulator + category.data.tasks.length,
+    0
+  );
+
   return (
     <SafeAreaView>
       <TouchableOpacity className="px-6" onPress={() => navigator.openDrawer()}>
@@ -39,8 +44,8 @@ const HomeScreen = () => {
       </TouchableOpacity>
       <View className="flex-row justify-around mt-2 items-center px-2">
         <View className="p-6">
-          <Text className="text-4xl font-bold">Hello Gary</Text>
-          <Text>Today you have 4 tasks </Text>
+          <Text className="text-4xl font-bold">Hello</Text>
+          <Text>You have {totalTasks} tasks total </Text>
         </View>
         <Image
           source={require("../assets/person-outline.png")}
