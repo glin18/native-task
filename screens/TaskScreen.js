@@ -46,7 +46,7 @@ const TaskScreen = ({ route }) => {
       setTaskData({
         ...data,
         tasks: [
-          ...data.tasks,
+          ...taskData.tasks,
           {
             todo: newTask,
             isCompleted: false,

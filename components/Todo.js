@@ -6,8 +6,8 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
 const Todo = ({ item, categoryId, taskData, setTaskData }) => {
+  const taskDocRef = doc(db, "category", categoryId);
   const handleDelete = async () => {
-    const taskDocRef = doc(db, "category", categoryId);
     try {
       await updateDoc(taskDocRef, {
         tasks: taskData.tasks.filter((task) => task.id != item.id),
@@ -21,11 +21,39 @@ const Todo = ({ item, categoryId, taskData, setTaskData }) => {
     }
   };
 
+  const onCheck = async () => {
+    try {
+      await updateDoc(taskDocRef, {
+        tasks: taskData.tasks.map((task) => {
+          if (task.id != item.id) {
+            return task;
+          } else {
+            task.isCompleted = !task.isCompleted;
+            return task;
+          }
+        }),
+      });
+      setTaskData({
+        ...taskData,
+        tasks: taskData.tasks.map((task) => {
+          if (task.id != item.id) {
+            return task;
+          } else {
+            task.isCompleted = !task.isCompleted;
+          }
+        }),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <View className="flex-row items-center">
       <CheckBox
         checked={item.isCompleted}
         checkedColor="black"
+        onPress={onCheck}
         containerStyle={{ backgroundColor: "rgba(52, 52, 52, alpha)" }}
       />
       <Text className="text-lg">{item.todo}</Text>
