@@ -34,7 +34,6 @@ const TaskScreen = ({ route }) => {
     const taskDocRef = doc(db, "category", id);
     try {
       await updateDoc(taskDocRef, {
-        ...data,
         tasks: [
           ...data.tasks,
           {
@@ -85,7 +84,13 @@ const TaskScreen = ({ route }) => {
           data={taskData.tasks}
           showsVerticalScrollIndicator={false}
           renderItem={({ item }) => (
-            <Todo item={item} keyExtractor={(item) => item.id} />
+            <Todo
+              item={item}
+              keyExtractor={(item) => item.id}
+              categoryId={id}
+              taskData={taskData}
+              setTaskData={setTaskData}
+            />
           )}
         />
       </View>
