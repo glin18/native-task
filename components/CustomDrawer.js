@@ -8,6 +8,7 @@ import {
   ArrowRightOnRectangleIcon,
   Cog6ToothIcon,
   UserIcon,
+  HomeIcon,
 } from "react-native-heroicons/outline";
 import { auth } from "../firebaseConfig";
 import { useAuth } from "../hooks/useAuth";
@@ -39,6 +40,13 @@ const CustomDrawer = (props) => {
           margin: 20,
         }}
       />
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Home")}
+        className="flex-row gap-x-4 items-center pl-6 mt-4"
+      >
+        <HomeIcon color="black" size={28} />
+        <Text className="font-bold text-xl">Home</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate("Customize")}
         className="flex-row gap-x-4 items-center pl-6 mt-4"
