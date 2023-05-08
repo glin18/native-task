@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import HomeScreen from "../screens/HomeScreen";
 import TaskScreen from "../screens/TaskScreen";
 import CustomDrawer from "./CustomDrawer";
+import CustomizeScreen from "../screens/CustomizeScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -20,6 +21,11 @@ const AppStack = () => {
         component={TaskScreen}
         options={{ headerShown: false }}
         initialParams={{ category: "Error", numTasks: "0" }}
+      />
+      <Drawer.Screen
+        name="Customize"
+        component={CustomizeScreen}
+        options={{ headerShown: false }}
       />
     </Drawer.Navigator>
   );

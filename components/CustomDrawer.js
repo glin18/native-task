@@ -11,9 +11,11 @@ import {
 } from "react-native-heroicons/outline";
 import { auth } from "../firebaseConfig";
 import { useAuth } from "../hooks/useAuth";
+import { useNavigation } from "@react-navigation/native";
 
 const CustomDrawer = (props) => {
   const { setCurrentUser } = useAuth();
+  const navigation = useNavigation();
 
   const handleSignOut = async () => {
     try {
@@ -37,7 +39,10 @@ const CustomDrawer = (props) => {
           margin: 20,
         }}
       />
-      <TouchableOpacity className="flex-row gap-x-4 items-center pl-6 mt-4">
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Customize")}
+        className="flex-row gap-x-4 items-center pl-6 mt-4"
+      >
         <Cog6ToothIcon color="black" size={28} />
         <Text className="font-bold text-xl">Customize</Text>
       </TouchableOpacity>
