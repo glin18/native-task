@@ -7,6 +7,7 @@ import {
   Image,
   Modal,
   TextInput,
+  FlatList,
 } from "react-native";
 import {
   Bars3BottomLeftIcon,
@@ -39,7 +40,7 @@ export default function CustomizeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1">
       <TouchableOpacity className="px-6" onPress={() => navigator.openDrawer()}>
         <Bars3BottomLeftIcon color="black" size={35} />
       </TouchableOpacity>
@@ -53,17 +54,15 @@ export default function CustomizeScreen() {
           style={{ height: 80, width: 80, resizeMode: "contain" }}
         />
       </View>
-      <View className="flex-col space-y-5">
-        <ScrollView
+      <View className="flex-col space-y-5 flex-1">
+        <FlatList
           contentContainerStyle={{
             alignItems: "center",
-            height: "70%",
           }}
-        >
-          {categories.map((category) => (
-            <TaskCard key={category.id} category={category} disable={true} />
-          ))}
-        </ScrollView>
+          data={categories}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <TaskCard category={item} disable={true} />}
+        />
         <TouchableOpacity onPress={() => setModalVisible(true)}>
           <Icon name="add-circle-outline" type="ionicon" size={60} />
         </TouchableOpacity>
