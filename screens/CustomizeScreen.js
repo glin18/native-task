@@ -61,7 +61,14 @@ export default function CustomizeScreen() {
           }}
           data={categories}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <TaskCard category={item} disable={true} />}
+          renderItem={({ item }) => (
+            <TaskCard
+              category={item}
+              disable={true}
+              setCategories={setCategories}
+              categories={categories}
+            />
+          )}
         />
         <TouchableOpacity onPress={() => setModalVisible(true)}>
           <Icon name="add-circle-outline" type="ionicon" size={60} />
