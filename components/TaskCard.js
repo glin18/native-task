@@ -19,9 +19,9 @@ const TaskCard = ({ category, disable = false }) => {
           </Text>
         </View>
 
-        <View className="pr-3">
+        <TouchableOpacity className="pr-3">
           <TrashIcon />
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }
